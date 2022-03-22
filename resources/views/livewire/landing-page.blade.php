@@ -53,7 +53,7 @@
                 type="email"
                 name="email"
                 placeholder="Email address"
-                wire:model="email  "
+                wire:model.defer="email"
                 ></x-input>
                 <span class="text-gray-100 text-xs">
                     {{
@@ -64,11 +64,17 @@
                 </span>
                 <x-button
                 class="px-5 py-3 mt-5 w-80 bg-blue-500 justify-center">
-                    Get In
+                    {{-- ローディングアイコン --}}
+                    <span class="animate-spin" wire:loading wire:target="subscribe">
+                        &#9696;
+                    </span>
+                    {{-- ローディング中非表示 --}}
+                    <span wire:loading.remove wire:target="subscribe">
+                        Get In
+                    </span>
                 </x-button>
             </form>
         </x-modal>
-
         <x-modal class="bg-green-500" trigger="showSuccess">
             <p class="animate-pulse text-white text-9xl font-extrabold text-center">
                 &check;
