@@ -1,8 +1,8 @@
 <div
         class="flex flex-col bg-indigo-900 w-full h-screen"
         x-data="{
-            showSubscribe: false,
-            showSuccess: false,
+            showSubscribe: @entangle('showSubscribe'),
+            showSuccess: @entangle('showSuccess'),
             }">
         <nav class="flex pt-5 justify-between container mx-auto text-indigo-200">
             <a href="/" class="text-4xl font-bold">
@@ -56,7 +56,11 @@
                 wire:model="email  "
                 ></x-input>
                 <span class="text-gray-100 text-xs">
-                    We will send you a confirmation email.
+                    {{
+                        $errors->has('email')
+                        ? $errors->first('email')
+                        : 'We will send you a confirmation email.'
+                    }}
                 </span>
                 <x-button
                 class="px-5 py-3 mt-5 w-80 bg-blue-500 justify-center">
@@ -72,8 +76,14 @@
             <p class="text-white text-5xl font-extrabold text-center mt-16">
                 Great!
             </p>
-            <p class="text-white text-3xl text-center">
-                See you in your inbox.
-            </p>
+            @if (request()->has('verified') && request()->verified == 1)
+                <p class="text-white text-3xl text-center">
+                    Thanks for confirming.
+                </p>
+            @else
+                <p class="text-white text-3xl text-center">
+                    See you in your inbox.
+                </p>
+            @endif
         </x-modal>
     </div>
