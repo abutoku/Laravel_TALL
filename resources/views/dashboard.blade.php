@@ -15,7 +15,7 @@
 
                     <ul class="list-disc pl-5">
                         <li class="text-blue-500 hover:underline">
-                            <a href="#">Manage Subscribers</a>
+                            <a href="{{ route('subscribers.all') }}">Manage Subscribers</a>
                         </li>
                     </ul>
                 </div>
