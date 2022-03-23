@@ -647,6 +647,9 @@ select {
 .z-50 {
   z-index: 50;
 }
+.float-right {
+  float: right;
+}
 .m-auto {
   margin: auto;
 }
@@ -1125,6 +1128,9 @@ select {
 }
 .pt-1 {
   padding-top: 0.25rem;
+}
+.pl-8 {
+  padding-left: 2rem;
 }
 .pt-6 {
   padding-top: 1.5rem;
